@@ -1,0 +1,7 @@
+<h1>Nos voitures</h1>
+
+<% @cars.each do |car| %>
+  <%= link_to car_path(car) do %>
+    <%= image_tag(car.photo) %>
+  <% end %>
+<% end %>

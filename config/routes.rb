@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'bookings/index'
+  get 'bookings/show'
+  get 'cars/index'
+  get 'cars/show'
   devise_for :users
   root to: "cars#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

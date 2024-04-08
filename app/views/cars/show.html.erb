@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <h1>hello la team</h1>
+    <div data-controller="price-calculation">
+      <%= @car.model %>
+      <span>Prix par jour: </span>
+      <p data-price-calculation-target="pricePerDay"><%= @car.price_per_day %></p>
+      <%= image_tag(@car.photo) %>
+      <%= simple_form_for([@car, @booking]) do |f| %>
+        <%= f.input :start_date, :label => "Date de début",
+      as: :string,
+      input_html: { data: { price_calculation_target: "startDate", action: "change->price-calculation#calculate", controller: "datepicker" }} %>
+        <%= f.input :end_date, :label => "Date de fin",
+      as: :string,
+      input_html: { data: { price_calculation_target: "endDate", action: "change->price-calculation#calculate", controller: "datepicker"}} %>
+        <%= f.input :total_price, :label => "Prix total",
+      as: :string,
+      input_html: { data: { price_calculation_target: "totalDay"}} %>
+        <div><%= f.button :submit, "Réserver" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
